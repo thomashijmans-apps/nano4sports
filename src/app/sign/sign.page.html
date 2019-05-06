@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Sign Up</ion-title>
+      </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+      <h3><b>Welcome back</b></h3>
+      <p class="quote">Sign in to use the sound app.</p>
+     
+      <!-- <div id="sign-block"> -->
+        <!-- use of signcomponent -->
+        <!-- <sign></sign>  -->
+  
+          <form [formGroup]="registrationForm" (ngSubmit)="onSignUp()">
+          <ion-item>
+            <ion-label floating >Email</ion-label>
+            <ion-input maxLength="50" type="text" formControlName="email" ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label  floating >Password</ion-label>
+            <ion-input maxLength="50" type="password" formControlName="password"></ion-input>
+          </ion-item>
+  
+          <button  class="fixed-button" type="submit" [disabled]="!registrationForm.valid" >
+            submit
+              <!-- <ion-icon  name="arrow-round-forward"></ion-icon> -->
+            </button>  
+  
+        </form>
+          
+          
+          
+          <!-- <div id="resetpassword-block">
+            <a id="resetpassword" (click)="pushToResetPassword()">Forgot my password</a>
+          </div> -->
+          
+      <!-- </div>   -->
+  
+  </ion-content>
+  

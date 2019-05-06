@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>run</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-button expand="block" routerLink="start" >START RUN</ion-button> -->
+  
+  <!-- <ion-button expand="block" shape="round" routerLink="sensors">SENSORS</ion-button>
+  <ion-button expand="block" shape="round" routerLink="music">MUSIC</ion-button>
+  <ion-button expand="block" shape="round" routerLink="soundvfx">SOUND VFX</ion-button>
+  <ion-button expand="block" shape="round" routerLink="volume">VOLUME</ion-button> -->
+  <div *ngIf="runBlock">
+  <ion-button (click)='showTimer()' class="start-btn" expand="block" color="dark">
+    <ion-icon id="walk" name="walk"></ion-icon>
+  </ion-button>
+  </div>
+
+  <div *ngIf="timerBlock">
+      <h1>{{time}}</h1> 
+      <ion-button (click)='startTimer()'>Start Timer</ion-button>
+      <ion-button (click)='pauseTimer()'>Pause</ion-button>
+      <ion-button (click)='resetTimer()'>Reset</ion-button>
+      <ion-button (click)='saveData()'>Save</ion-button>
+
+  </div>
+
+  <div class="wrap-div">
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label>Options</ion-label>
+      </ion-list-header>
+      <ion-item routerLink="sensors">
+        <ion-icon slot="start" color="medium" name="build"></ion-icon>
+        <ion-label>Sensors</ion-label>
+      </ion-item>
+      <ion-item routerLink="music">
+        <ion-icon slot="start" color="medium" name="musical-notes"></ion-icon>
+        <ion-label>Music</ion-label>
+      </ion-item>
+      <ion-item routerLink="soundvfx">
+        <ion-icon slot="start" color="medium" name="options"></ion-icon>
+        <ion-label>Sounds</ion-label>
+      </ion-item>
+      <ion-item routerLink="volume">
+        <ion-icon slot="start" color="medium" name="volume-high"></ion-icon>
+        <ion-label>Volume</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  
+
+</ion-content>

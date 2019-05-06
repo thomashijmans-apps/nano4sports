@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+        
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>soundvfx</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <ion-item>
+          <ion-label>Knee</ion-label>
+          <ion-toggle (ionChange)="showSoundView()"></ion-toggle>
+        </ion-item>
+
+        <div id="kneeblock" *ngIf="kneeView" >
+          <ion-list>
+              <ion-list-header>
+                SOUNDS
+              </ion-list-header>
+
+              <ion-item-sliding>
+                <ion-item>
+                  <ion-label>{{sound}}</ion-label>
+                  <ion-button (click)="onDownloadSound()">download</ion-button>
+                </ion-item>
+              </ion-item-sliding>
+            
+              <!-- <ion-item-sliding>
+                <ion-item>
+                  <ion-label>Horse</ion-label>
+                </ion-item>
+                <ion-item-options side="end">
+                  <ion-item-option (click)="unread(item)">Unread</ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding> -->
+            </ion-list>
+        </div>
+
+      
+        <!-- <ion-item>
+          <ion-label>Foot</ion-label>
+          <ion-toggle [(ngModel)]="Foot"></ion-toggle>
+        </ion-item> -->
+
+      </ion-list>
+
+</ion-content>

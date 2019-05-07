@@ -30,4 +30,9 @@ export class SoundvfxPage implements OnInit {
     this.soundsService.downloadSound();
   }
 
+  onConnectSound(){
+   console.log('sound is connected to keypoint knee');
+   
+  }
+
 }

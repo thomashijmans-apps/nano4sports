@@ -20,14 +20,18 @@
 
   <div *ngIf="timerBlock">
       <h1>{{time}}</h1> 
-      <ion-button (click)='startTimer()'>Start Timer</ion-button>
+      <ion-button [disabled]="disableButton" (click)='startTimer()'>Start Timer</ion-button>
       <ion-button (click)='pauseTimer()'>Pause</ion-button>
       <ion-button (click)='resetTimer()'>Reset</ion-button>
-      <ion-button (click)='saveData()'>Save</ion-button>
+      <ion-button (click)='onsaveData()'>Save</ion-button>
+      <ion-button (click)='stopTimer()'>Go back</ion-button>
+
+     
+
 
   </div>
 
-  <div class="wrap-div">
+  <div *ngIf="optionsBlock" class="wrap-div">
     <ion-list lines="none">
       <ion-list-header>
         <ion-label>Options</ion-label>

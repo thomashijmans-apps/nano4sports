@@ -35,9 +35,11 @@ import { ProfileService } from './services/profile.service';
   providers: [
     StatusBar,
     SplashScreen,
+
     AuthenticationService,
     ProfileService,
     SoundsService,
+
     NativeAudio,
     Gyroscope,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

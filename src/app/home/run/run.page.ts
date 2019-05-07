@@ -12,6 +12,8 @@ export class RunPage implements OnInit {
 
   runBlock:boolean = true;
   timerBlock:boolean;
+  disableButton:boolean;
+  optionsBlock:boolean = true;
   time: number = 0;
   interval;
 
@@ -22,7 +24,7 @@ ngOnInit() {
 
 //all sounds loaded into the memory
 this.nativeAudio.preloadSimple('dog', 'assets/sounds/dog.wav');
-this.nativeAudio.preloadSimple('horse', 'assets/sounds/horse.wav');
+// this.nativeAudio.preloadSimple('horse', 'assets/sounds/horse.wav');
 
 
 }
@@ -51,10 +53,13 @@ this.nativeAudio.play('horse');
 //TIMER METHODS
 showTimer(){
   this.runBlock =! this.runBlock;
+  this.optionsBlock =! this.optionsBlock;
   this.timerBlock =! this.timerBlock;
 }
 
 startTimer() {
+  // 0
+  this.disableButton = true;
   // 1
   this.startGyro();
   // 2
@@ -71,15 +76,32 @@ startTimer() {
 
 pauseTimer() {
   clearInterval(this.interval);
+  this.disableButton = false;
 }
 
 resetTimer(){
   clearInterval(this.interval);
   this.time = 0;
+  this.disableButton = false;
 }
-saveData(){
+stopTimer(){
+  clearInterval(this.interval);
+  this.disableButton = false;
+  //alert
   this.timerBlock =! this.timerBlock;
   this.runBlock =! this.runBlock;
+  this.optionsBlock =! this.optionsBlock;
+  
+
+}
+onsaveData(){
+  this.timerBlock =! this.timerBlock;
+  this.runBlock =! this.runBlock;
+  this.optionsBlock =! this.optionsBlock;
+  this.disableButton = false;
+
+  //sends data to firebase and navigate to data page
+
 }
 
 }

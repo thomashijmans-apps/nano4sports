@@ -25,10 +25,6 @@ const routes: Routes = [
                         loadChildren: './run/run.module#RunPageModule',
                     },
                     {
-                        path: 'start',
-                        loadChildren: './run/start/start.module#StartPageModule',
-                    },
-                    {
                         path: 'sensors',
                         loadChildren: './run/sensors/sensors.module#SensorsPageModule',
                     },
@@ -67,7 +63,7 @@ const routes: Routes = [
   { path: 'music', loadChildren: './run/music/music.module#MusicPageModule' },
   { path: 'sensors', loadChildren: './run/sensors/sensors.module#SensorsPageModule' },
   { path: 'volume', loadChildren: './run/volume/volume.module#VolumePageModule' },
-  { path: 'start', loadChildren: './run/start/start.module#StartPageModule' }
+ 
 
 ];
 

@@ -3,10 +3,52 @@
       <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
         </ion-buttons>
-    <ion-title>music</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding >
+
+  <div class="wrapper">
+
+      <h3><b>Adaptive music</b></h3>
+        <hr>
+        <p class="quote">
+          Choose here your favorite <br> adaptive music  which  plays <br> in the background while <br> running
+        </p>     
+        
+        
+    <ion-list>
+        <ion-item>
+            <ion-label>
+              <img src="assets/devices/music-player.svg" width='20%' alt="">
+            </ion-label>
+            <ion-toggle (ionChange)="showBackBlock()"></ion-toggle>
+        </ion-item>
+        <div class="sounds-block" *ngIf="backBlock" >
+            <ion-list>
+                <ion-list-header>
+                  SOUNDS
+                </ion-list-header>
+  
+                <ion-item-sliding>
+                  <ion-item>
+                    <ion-label>{{sound}}</ion-label>
+                    <ion-button (click)="onConnectSound()">connect</ion-button>
+  
+                    <ion-button (click)="onDownloadSound()">download</ion-button>
+                  </ion-item>
+                </ion-item-sliding>
+              </ion-list>
+          </div> 
+        </ion-list>
+
+        <ion-item>
+            <ion-label>
+              <img src="assets/devices/spotify.svg" width='20%' alt="">
+            </ion-label>
+            <ion-toggle (ionChange)="showBackBlock()"></ion-toggle>
+        </ion-item>
+     
+  </div>
 
 </ion-content>

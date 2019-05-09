@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { LoadingController, AlertController, NavController} from '@ionic/angular';
-import {AuthenticationService} from '../services/authentication.service';
+import { AuthenticationService } from '../services/authentication/authentication.service';
+
 
 
 

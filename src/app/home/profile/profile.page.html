@@ -1,88 +1,79 @@
-<ion-header>
+<!-- <ion-header no-border>
   <ion-toolbar>
     <ion-title>profile</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
+
+<ion-content padding>
+
+    <div class="wrapper">
+
+        <h3><b>Please fill in the form</b></h3>
+        <hr>
+        <p class="quote">
+          At least fill in the <b>*</b> required fields <br>
+          before submitting.
+        </p>        
+     
+    <div class="form-block">
     <form [formGroup]="profileInfoForm" (ngSubmit)="onSaveProfileInfo()" >
   
-
+      <div class="form-names">
           <ion-item>
-            <ion-label floating required>Name <b>*</b></ion-label>
+            <ion-label floating required>Name </ion-label>
             <ion-input maxLength="50" type="text" formControlName="name" [value]="profileInfoObject.name" ></ion-input>
           </ion-item>
         
           <ion-item>
-            <ion-label floating>Gender</ion-label>
+            <ion-label floating>Gender <b>*</b></ion-label>
             <ion-input maxLength="50" type="text" formControlName="gender" [value]="profileInfoObject.gender"></ion-input>
           </ion-item>
 
           <ion-item>
-              <ion-label floating>Length</ion-label>
+              <ion-label floating>Length <b>*</b></ion-label>
               <ion-input maxLength="50" type="text" formControlName="length" [value]="profileInfoObject.length"  ></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Weight</ion-label>
+            <ion-label floating>Weight <b>*</b></ion-label>
             <ion-input maxLength="50" type="text" formControlName="weight" [value]="profileInfoObject.weight"  ></ion-input>
         </ion-item>
-
+      </div>  
          
-       
-        
-        
-      
-            <p class="date-title">Birthday <b>*</b></p>
-            <ion-item>
-              <ion-datetime [(ngModel)]="profileInfoObject.birthday" displayFormat="DD/MMMM/YYYY" pickerFormat="DD/MMMM/YYYY" formControlName="birthday"></ion-datetime>
-            </ion-item>
-      
+
           
         
         
         
         
         <!-- //checkboxes -->
-        <!-- <div class="form-checkbox"> -->
+        <div class="form-checkbox">
         
-           <!-- <ion-label>Would you like accomodation on <br> Saturday evening?</ion-label>
+           <ion-label>Did you ever had injuries ?</ion-label>
             <ion-item>
               <ion-checkbox  checked="{{guestInfoObject.accomodationSaturday}}"  formControlName="accomodationSaturday"></ion-checkbox>
             </ion-item>
-        
-            <ion-label>Attending lunch on Saturday?</ion-label>
-            <ion-item>
-                <ion-checkbox   checked="{{guestInfoObject.lunchSaturday}}" formControlName="lunchSaturday"></ion-checkbox>
-            </ion-item>
-        
-            <ion-label>Attending church on Saturday?</ion-label>
-            <ion-item>
-                <ion-checkbox   checked="{{guestInfoObject.churchSaturday}}" formControlName="churchSaturday"></ion-checkbox>
-            </ion-item>
-        
-            <ion-label>Attending dinner & party Saturday?</ion-label>
-            <ion-item>
-                <ion-checkbox   checked="{{guestInfoObject.dinnerPartySaturday}}" formControlName="dinnerPartySaturday"></ion-checkbox>
-            </ion-item>
-        
-            <ion-label>Attending lunch on Sunday?</ion-label>
-             <ion-item>
-                <ion-checkbox   checked="{{guestInfoObject.lunchSunday}}" formControlName="lunchSunday"></ion-checkbox>
-            </ion-item>
-        </div> -->
-        
+        </div>
         <!-- end checkboxes -->
         
         <!-- //button -->
-          <button  class="fixed-button" type="submit" [disabled]="!guestInfoForm.valid"  >
-            submit
-            <!-- <ion-icon name="arrow-round-forward"></ion-icon> -->
-          </button>    
+          <!-- <button  class="fixed-button" type="submit"   >
+            submit -->
+            <div class="run-block">
+            <ion-button color="dark" class="log-reg-btn" type="submit" [disabled]="!guestInfoForm.valid">save</ion-button>
+            </div>
+          <!-- </button>     -->
+
+          
         
               
         </form>
+      </div>
+    </div>
         
+    <!-- <div class="spacer"></div> -->
+    
         
 
 </ion-content>

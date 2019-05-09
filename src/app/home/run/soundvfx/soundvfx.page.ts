@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SoundsService } from 'src/app/services/sounds.service';
+import { SoundsService } from '../../../services/sounds/sounds.service';
+
 
 
 @Component({
@@ -9,7 +10,10 @@ import { SoundsService } from 'src/app/services/sounds.service';
 })
 export class SoundvfxPage implements OnInit {
 
-  kneeView: boolean = false;
+
+  backBlock:boolean = false;
+  kneeBlock:boolean = false;
+  tiptoedBlock: boolean = false;
   sound:string;
 
 
@@ -19,9 +23,21 @@ export class SoundvfxPage implements OnInit {
     
   }
 
-  showSoundView(){
+  showBackBlock(){
 
-    this.kneeView =! this.kneeView;  
+    this.backBlock =! this.backBlock;  
+      this.sound = this.soundsService.getSounds();
+      console.log(this.sound);  
+  }
+  showKneeBlock(){
+
+    this.kneeBlock =! this.kneeBlock;  
+      this.sound = this.soundsService.getSounds();
+      console.log(this.sound);  
+  }
+  showTiptoedBlock(){
+
+    this.tiptoedBlock =! this.tiptoedBlock;  
       this.sound = this.soundsService.getSounds();
       console.log(this.sound);  
   }

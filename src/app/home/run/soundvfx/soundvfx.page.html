@@ -5,19 +5,75 @@
         
       </ion-back-button>
     </ion-buttons>
-    <ion-title>soundvfx</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+
+    <div class="wrapper">
+
+    <h3><b>Running keypoints</b></h3>
+    <hr>
+    <p class="quote">
+        Download sound vfx and <br> connect them to keypoints during your run <br>
+      </p>
 
     <ion-list>
         <ion-item>
-          <ion-label>Knee</ion-label>
-          <ion-toggle (ionChange)="showSoundView()"></ion-toggle>
-        </ion-item>
+            <ion-label>
+              <img src="assets/keypoints/men-back.svg" width='25%' alt="">
+            </ion-label>
+            <ion-toggle (ionChange)="showBackBlock()"></ion-toggle>
+          </ion-item>
+        <div class="sounds-block" *ngIf="backBlock" >
+            <ion-list>
+                <ion-list-header>
+                  SOUNDS
+                </ion-list-header>
+  
+                <ion-item-sliding>
+                  <ion-item>
+                    <ion-label>{{sound}}</ion-label>
+                    <ion-button (click)="onConnectSound()">connect</ion-button>
+  
+                    <ion-button (click)="onDownloadSound()">download</ion-button>
+                  </ion-item>
+                </ion-item-sliding>
+              </ion-list>
+          </div> 
 
-        <div id="kneeblock" *ngIf="kneeView" >
+        <ion-item>
+          <ion-label>
+            <img src="assets/keypoints/vended-knee.svg" width='25%' alt="">
+          </ion-label>
+          <ion-toggle (ionChange)="showKneeBlock()"></ion-toggle>
+        </ion-item>
+        
+        <div class="sounds-block" *ngIf="kneeBlock" >
+            <ion-list>
+                <ion-list-header>
+                  SOUNDS
+                </ion-list-header>
+  
+                <ion-item-sliding>
+                  <ion-item>
+                    <ion-label>{{sound}}</ion-label>
+                    <ion-button (click)="onConnectSound()">connect</ion-button>
+  
+                    <ion-button (click)="onDownloadSound()">download</ion-button>
+                  </ion-item>
+                </ion-item-sliding>
+              </ion-list>
+          </div>
+
+        <ion-item>
+            <ion-label>
+              <img src="assets/keypoints/walking-tiptoed.svg" width='25%' alt="">
+            </ion-label>
+            <ion-toggle (ionChange)="showTiptoedBlock()"></ion-toggle>
+          </ion-item>
+
+        <div class="sounds-block" *ngIf="tiptoedBlock" >
           <ion-list>
               <ion-list-header>
                 SOUNDS
@@ -31,24 +87,11 @@
                   <ion-button (click)="onDownloadSound()">download</ion-button>
                 </ion-item>
               </ion-item-sliding>
-            
-              <!-- <ion-item-sliding>
-                <ion-item>
-                  <ion-label>Horse</ion-label>
-                </ion-item>
-                <ion-item-options side="end">
-                  <ion-item-option (click)="unread(item)">Unread</ion-item-option>
-                </ion-item-options>
-              </ion-item-sliding> -->
             </ion-list>
         </div>
 
-      
-        <!-- <ion-item>
-          <ion-label>Foot</ion-label>
-          <ion-toggle [(ngModel)]="Foot"></ion-toggle>
-        </ion-item> -->
-
       </ion-list>
+
+      </div>
 
 </ion-content>

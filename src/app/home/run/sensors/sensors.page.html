@@ -3,10 +3,45 @@
       <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
         </ion-buttons>
-    <ion-title>sensors</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+
+    <div class="wrapper">
+
+        <h3><b>Sensors</b></h3>
+        <hr>
+        <p class="quote">
+           Select the sensors you want to use while running
+        </p>
+    </div>
+
+    <ion-list>
+      
+        <ion-item>
+            <ion-label>
+              <img src="assets/devices/icon.svg" width='20%' alt="">
+            </ion-label>
+            <ion-toggle (ionChange)="showBackBlock()"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>
+              <img src="assets/devices/headphones.svg" width='20%' alt="">
+            </ion-label>
+            <ion-toggle (ionChange)="showBackBlock()"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>
+              <img src="assets/devices/smartwatch.svg" width='20%' alt="">
+            </ion-label>
+            <ion-toggle (ionChange)="showBackBlock()"></ion-toggle>
+        </ion-item>
+
+
+
+      </ion-list>
 
 </ion-content>

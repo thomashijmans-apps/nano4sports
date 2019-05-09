@@ -8,38 +8,36 @@
   </ion-header>
   
   <ion-content>
-  
-      <h3><b>Welcome back</b></h3>
-      <p class="quote">Sign in to use the sound app.</p>
-     
-      <!-- <div id="sign-block"> -->
-        <!-- use of signcomponent -->
-        <!-- <sign></sign>  -->
-  
-          <form [formGroup]="registrationForm" (ngSubmit)="onSignUp()">
+    <div class="signup-form"> 
+      <div class="padding-left">
+          <img class="logo" src="../../assets/images/soundtraveller.png"><br>
+          <h3><b>Welcome</b></h3>
+          <p class="quote">Create an account to use the app.</p>
+      </div>
+
+      <form [formGroup]="registrationForm" (ngSubmit)="onSignUp()">
           <ion-item>
-            <ion-label floating >Email</ion-label>
-            <ion-input maxLength="50" type="text" formControlName="email" ></ion-input>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input maxLength="50" type="text" formControlName="email" ></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label  floating >Password</ion-label>
-            <ion-input maxLength="50" type="password" formControlName="password"></ion-input>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input maxLength="50" type="password" formControlName="password"></ion-input>
           </ion-item>
-  
-          <button  class="fixed-button" type="submit" [disabled]="!registrationForm.valid" >
-            submit
-              <!-- <ion-icon  name="arrow-round-forward"></ion-icon> -->
-            </button>  
-  
-        </form>
-          
-          
-          
-          <!-- <div id="resetpassword-block">
-            <a id="resetpassword" (click)="pushToResetPassword()">Forgot my password</a>
+
+          <div class="submit-block">
+              <ion-button color="dark" class="log-reg-btn"type="submit" [disabled]="!registrationForm.valid">submit</ion-button>
+          </div>
+
+          <!-- <div class="padding-left">
+              <ion-button class="signup-btn" type="submit" color="dark" expand="block" [disabled]="!registrationForm.valid">Signup</ion-button>
           </div> -->
+
+      </form>
+
+  </div>
           
-      <!-- </div>   -->
+    
   
   </ion-content>
   

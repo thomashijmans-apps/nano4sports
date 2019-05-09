@@ -9,29 +9,39 @@
 
 <ion-content>
 
-    <h3><b>Welcome back</b></h3>
-    <p class="quote">Log in to use the sound app.</p>
-   
-    <!-- <div id="sign-block"> -->
-      <!-- use of signcomponent -->
-      <!-- <sign></sign>  -->
+  <div class="login-form">
+    <div class="padding-left">
+        <img class="logo" src="../../assets/images/soundtraveller.png"><br>
+        <h3><b>Welcome back</b></h3>
+    </div>
 
-        <form [formGroup]="registrationForm" (ngSubmit)="onSignIn()">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSignIn()">
         <ion-item>
-          <ion-label floating >Email</ion-label>
-          <ion-input maxLength="50" type="text" formControlName="email" ></ion-input>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input maxLength="50" type="text" formControlName="email" ></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label  floating >Password</ion-label>
-          <ion-input maxLength="50" type="password" formControlName="password"></ion-input>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input maxLength="50" type="password" formControlName="password"></ion-input>
         </ion-item>
 
-        <button  class="fixed-button" type="submit" [disabled]="!registrationForm.valid" >
+        <div class="submit-block">
+            <ion-button color="dark" class="log-reg-btn"type="submit" [disabled]="!registrationForm.valid">submit</ion-button>
+        </div>
+
+        <!-- <button  class="fixed-button" type="submit" [disabled]="!registrationForm.valid" >
           submit
-            <!-- <ion-icon  name="arrow-round-forward"></ion-icon> -->
-          </button>  
+        </button>   -->
 
-      </form>
+        <div id="resetpassword-block">
+          <a id="resetpassword" (click)="pushToResetPassword()">Forgot my password</a>
+        </div>
+
+       
+
+    </form>
+</div>
+
         
         
         

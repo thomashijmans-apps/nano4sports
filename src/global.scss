@@ -9,3 +9,33 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+
+*{
+    font-family: 'Comfortaa'
+}
+
+ion-content {
+    --background: none;
+    background-image: url('./assets/images/swirl.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+form{
+    width: 100%;
+    margin: auto;
+}
+
+hr{
+    width: 100%;
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:#666;
+    border: 0 none;
+    }

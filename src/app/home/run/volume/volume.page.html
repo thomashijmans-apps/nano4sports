@@ -3,10 +3,41 @@
       <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
         </ion-buttons>
-    <ion-title>volume</ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+
+  <div class="wrapper">
+
+      <h3><b>Volume</b></h3>
+        <hr>
+        <p class="quote">
+         Here you can set the volume of the adaptive music and sound vfx
+        </p>        
+     
+
+    <ion-list-header>
+            adaptive music
+    </ion-list-header>
+    <ion-item>
+        <ion-range value="50" min="0" max="100" step="2">
+        <ion-icon slot="end" color="medium" name="musical-notes"></ion-icon>
+        <!-- <ion-icon slot="end" name="sunny"></ion-icon> --> -->
+        </ion-range>
+      </ion-item>
+
+
+      <ion-list-header>
+        sound vfx
+      </ion-list-header>
+      <ion-item>
+          <ion-range value="50" min="0" max="100" step="2">   
+          <ion-icon slot="end" color="medium" name="options"></ion-icon>
+          </ion-range>
+        </ion-item>
+
+      </div>
 
 </ion-content>

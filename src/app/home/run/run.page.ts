@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
-import { Gyroscope, GyroscopeOrientation, } from '@ionic-native/gyroscope/ngx';
+import { DeviceMotion, DeviceMotionAccelerationData, DeviceMotionAccelerometerOptions } from '@ionic-native/device-motion/ngx';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -10,98 +11,151 @@ import { Gyroscope, GyroscopeOrientation, } from '@ionic-native/gyroscope/ngx';
 })
 export class RunPage implements OnInit {
 
-  runBlock:boolean = true;
-  timerBlock:boolean;
+ 
+  
+  textBlock:boolean = false;
+  runBlock:boolean = false;
+  timerBlock:boolean = true;
   disableButton:boolean;
-  optionsBlock:boolean = true;
-  time: number = 0;
+  showSaveButton:boolean;
+  showStartButton:boolean = true;
+  stopButton:boolean =true;
+
+  optionsBlock:boolean = false;
   interval;
+  stopProp:string = "stop";
 
-  constructor(private nativeAudio: NativeAudio,
-    private gyroscope: Gyroscope) { }
+  minute:boolean;
+  sec: number = 0;
+  min: number = 0;
 
-ngOnInit() {
+ 
 
-//all sounds loaded into the memory
-this.nativeAudio.preloadSimple('dog', 'assets/sounds/dog.wav');
-// this.nativeAudio.preloadSimple('horse', 'assets/sounds/horse.wav');
+  constructor(  private nativeAudio: NativeAudio,
+                private deviceMotion: DeviceMotion,
+                private navController: NavController) { }
+              
 
+  ngOnInit() {
+    // All sounds loaded into the memory
+    this.nativeAudio.preloadSimple('dog', 'assets/sounds/dog.wav');
+  }
 
-}
+ 
 
+  startDeviceMotion() {
 
-startGyro() {
-this.gyroscope.getCurrent()
-.then((orientation: GyroscopeOrientation) => {
-console.log(orientation.x);
-});
-
-this.gyroscope.watch()
-.subscribe((orientation: GyroscopeOrientation) => {
-
-if (orientation.x < 0){
-console.log('sounds from the left' + orientation.x);
-this.nativeAudio.play('dog');
-} else if ( orientation.x > 0) {
-console.log('sounds from right' + orientation.x);
-this.nativeAudio.play('horse');
-}
-});
-
-}
-
-//TIMER METHODS
-showTimer(){
-  this.runBlock =! this.runBlock;
-  this.optionsBlock =! this.optionsBlock;
-  this.timerBlock =! this.timerBlock;
-}
-
-startTimer() {
-  // 0
-  this.disableButton = true;
-  // 1
-  this.startGyro();
-  // 2
-  this.interval = setInterval(() => {
-    if(this.time >= 0) {
-      this.time++; 
-    } 
-    else {
-      console.log('interval problem');
-      
+    let option: DeviceMotionAccelerometerOptions = {
+      frequency:1000
     }
-  },1000)
-}
-
-pauseTimer() {
-  clearInterval(this.interval);
-  this.disableButton = false;
-}
-
-resetTimer(){
-  clearInterval(this.interval);
-  this.time = 0;
-  this.disableButton = false;
-}
-stopTimer(){
-  clearInterval(this.interval);
-  this.disableButton = false;
-  //alert
-  this.timerBlock =! this.timerBlock;
-  this.runBlock =! this.runBlock;
-  this.optionsBlock =! this.optionsBlock;
+    this.deviceMotion.watchAcceleration(option).subscribe((acceleration: DeviceMotionAccelerationData) => {
+      if(acceleration.x > 3){
+        console.log(acceleration.x);
+        this.nativeAudio.play('dog');
+      }
+      else if (acceleration.x < 3){
+        console.log(acceleration.x);
+      }
+      else{
+        console.log('you walk fine');   
+      }
+    });
+  }
   
 
-}
-onsaveData(){
-  this.timerBlock =! this.timerBlock;
-  this.runBlock =! this.runBlock;
-  this.optionsBlock =! this.optionsBlock;
-  this.disableButton = false;
+  //TIMER METHODS
+  
+  showTimer(){
+    this.textBlock =! this.textBlock;
+    this.runBlock =! this.runBlock;
+    this.optionsBlock =! this.optionsBlock;
+    this.timerBlock =! this.timerBlock;
+  }
 
-  //sends data to firebase and navigate to data page
+  startTimer() {
+    this.stopProp="stop";
+    this.stopButton = false;
+    // 0
+    this.disableButton =! this.disableButton;
+    // 1
+    this.startDeviceMotion();
+    // 2
+    this.interval = setInterval(() => {
+      if(this.sec >= 0) {
+        this.sec++;
+        if(this.sec >= 60) {
+          this.sec = 0;
+          this.min++;
+          if(this.min == 1 && this.sec == 0) {
+            this.minute =! this.minute;
+          }
+          this.interval();
+        }
+      }
+      else {
+        console.log('interval problem');
+        
+      }
+    },1000);
+  }
 
-}
+
+  resetTimer(){
+    if(this.stopProp == "resume"){
+    clearInterval(this.interval);
+    this.min = 0;
+    this.sec = 0;
+    this.disableButton = false;
+    this.showStartButton =! this.showStartButton;
+    this.showSaveButton =! this.showSaveButton;
+    this.stopProp = "stop";
+    this.stopButton = true;
+    }
+    else{
+      
+      
+    }
+  }
+
+  stopTimer(){
+
+    if(this.sec == 0){
+      this.stopButton = false;
+    }
+
+    else if(this.stopProp == "stop"){
+      clearInterval(this.interval);
+      this.showStartButton =! this.showStartButton;
+      this.showSaveButton =! this.showSaveButton;
+      this.stopProp = "resume";
+    }
+    else if (this.stopProp == "resume"){
+      this.stopProp = 'stop';
+      this.startTimer();
+      this.showSaveButton =! this.showSaveButton;
+      this.showStartButton =! this.showStartButton;
+      this.disableButton =! this.disableButton;
+    }
+    else{
+      console.log(this.stopProp);
+      
+    }
+    //alert
+    // this.timerBlock =! this.timerBlock;
+    // this.runBlock =! this.runBlock;
+    // this.optionsBlock =! this.optionsBlock;
+    // this.textBlock =! this.textBlock;
+  }
+
+  pushToRunSettings(){
+    this.timerBlock =! this.timerBlock;
+    this.runBlock =! this.runBlock;
+    this.optionsBlock =! this.optionsBlock;
+    this.textBlock =! this.textBlock;
+    this.disableButton = false;
+  }
+  onSaveRun(){
+
+  }
 
 }

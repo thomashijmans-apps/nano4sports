@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { LoadingController, AlertController, NavController} from '@ionic/angular';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { ProfileService } from 'src/app/services/profile.service';
-
+import { ProfileService } from '../../services/profile/profile.service';
 
 
 @Component({
@@ -20,11 +18,11 @@ export class ProfilePage implements OnInit {
 
 
   constructor(  private formBuilder: FormBuilder,
+                private profileService:ProfileService,
                 private loadingController: LoadingController,
                 private alertController: AlertController,
-                private authService: AuthenticationService,
                 private navController: NavController,
-                private profileService: ProfileService) { }
+               ) { }
 
   ngOnInit() {
     this.profileInfoForm = this.formBuilder.group({
@@ -32,7 +30,7 @@ export class ProfilePage implements OnInit {
       gender: '',
       length: '',
       weight: '',
-      birthday: ''
+      // birthday: ''
     });
   }
 
@@ -50,7 +48,7 @@ export class ProfilePage implements OnInit {
               gender: this.profileInfoObject[key].gender,
               length: this.profileInfoObject[key].length,
               weight: this.profileInfoObject[key].weight,
-              birthday: this.profileInfoObject[key].birthday,
+              // birthday: this.profileInfoObject[key].birthday,
             };        
           }
           // loading.dismiss();

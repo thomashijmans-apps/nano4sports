@@ -38,7 +38,12 @@ export class RunPage implements OnInit {
 
   ngOnInit() {
     // All sounds loaded into the memory
-    this.nativeAudio.preloadSimple('dog', 'assets/sounds/dog.wav');
+    this.nativeAudio.preloadComplex('back', 'assets/sounds/lowerback.mp3', 1, 1, 0);
+    this.nativeAudio.preloadComplex('wind', 'assets/sounds/wind.mp3', 1, 1, 0);
+    this.nativeAudio.preloadComplex('adaptive', 'assets/sounds/adaptive.mp3', 0.1, 1, 0);
+
+
+
   }
 
  
@@ -51,10 +56,12 @@ export class RunPage implements OnInit {
     this.deviceMotion.watchAcceleration(option).subscribe((acceleration: DeviceMotionAccelerationData) => {
       if(acceleration.x > 3){
         console.log(acceleration.x);
-        this.nativeAudio.play('dog');
+        this.nativeAudio.play('back');
       }
-      else if (acceleration.x < 3){
+      else if (acceleration.x < -3){
         console.log(acceleration.x);
+        this.nativeAudio.play('wind');
+
       }
       else{
         console.log('you walk fine');   
@@ -73,6 +80,8 @@ export class RunPage implements OnInit {
   }
 
   startTimer() {
+    this.nativeAudio.loop('adaptive');
+
     this.stopProp="stop";
     this.stopButton = false;
     // 0
@@ -118,6 +127,8 @@ export class RunPage implements OnInit {
   }
 
   stopTimer(){
+
+    this.nativeAudio.stop('adaptive');
 
     if(this.sec == 0){
       this.stopButton = false;

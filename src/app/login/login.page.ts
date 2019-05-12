@@ -35,11 +35,11 @@ export class LoginPage implements OnInit {
 
   onSignIn(){
 
-    const alertSignIn = this.alertController.create({
-      subHeader:'Goodday',
-      message: "Thanks for sign IN",
-      buttons: ['OK']
-    });
+    // const alertSignIn = this.alertController.create({
+    //   subHeader:'Goodday',
+    //   message: "Thanks for sign IN",
+    //   buttons: ['OK']
+    // });
 
 
     this.loadingController.create({
@@ -55,13 +55,13 @@ export class LoginPage implements OnInit {
         // 3
         loadingEl.dismiss();
         // 4
-        alertSignIn
-        .then((alertSignInEl)=>{
-          alertSignInEl.present();
+        // alertSignIn
+        // .then((alertSignInEl)=>{
+        //   alertSignInEl.present();
           //ga naar de volgende pagina of alert met thanks for loggin in
           this.navController.navigateForward('/home');
-        })
-        .catch();
+        // })
+        // .catch();
       })
       .catch((error) => {
         // 1

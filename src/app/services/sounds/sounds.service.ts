@@ -17,13 +17,29 @@ export class SoundsService {
 
     getSounds():any{
 
-      const refSounds = this.afsStorage.storage.ref('sounds').child('dog.wav');
+      const refSounds = this.afsStorage.storage.ref('sounds').child('lowerback.mp3');
+      return refSounds.name;
+       
+    }
+    getAdaptive():any{
+
+      const refSounds = this.afsStorage.storage.ref('sounds').child('adaptive.mp3');
       return refSounds.name;
        
     }
 
     downloadSound(){
-      const refSounds = this.afsStorage.storage.ref('sounds').child('dog.wav').getDownloadURL()
+      const refSounds = this.afsStorage.storage.ref('sounds').child('lowerback.mp3').getDownloadURL()
+      .then((url)=>{
+        console.log(url);
+        this.http.get(url)
+      })
+      .catch();
+
+    }
+
+    downloadAdaptive(){
+      const refSounds = this.afsStorage.storage.ref('sounds').child('lowerback.mp3').getDownloadURL()
       .then((url)=>{
         console.log(url);
         this.http.get(url)
